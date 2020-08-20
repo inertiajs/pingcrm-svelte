@@ -29,4 +29,10 @@ module.exports = {
     zIndex: ['responsive', 'focus'],
   },
   plugins: [],
+  purge: {
+    content: ['./resources/views/**/*.blade.php', './resources/js/**/*.vue'],
+    options: {
+      whitelistPatterns: [/nprogress/],
+    }
+  }
 }
