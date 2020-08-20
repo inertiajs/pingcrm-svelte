@@ -1,35 +1,40 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
   import { nanoid } from 'nanoid'
   import Label from '@/Shared/Label.svelte'
 
-  export let id = `text-input-${nanoid(5)}`
-  export let type = 'text'
+  export let id = `select-input-${nanoid(5)}`
   export let value
   export let label
   export let errors = []
 
   $: props = {
     ...$$restProps,
-    class: 'form-input',
+    class: null,
   }
 
   $: error = errors !== undefined && errors.length > 0
 
+  const dispatch = createEventDispatcher()
+
   function update(event) {
+    dispatch('change', event)
     value = event.target.value
   }
 </script>
 
-<div class={$$restProps.class || ''}>
+<div class={$$restProps.class}>
   <Label {label} {id} />
 
-  <input
+  <select
     {...props}
-    class:error
     {id}
-    {type}
+    class="form-select"
+    class:error
     {value}
-    on:input={update} />
+    on:blur|preventDefault={update}>
+    <slot selected={value} />
+  </select>
 
   {#if error}
     <div class="form-error">{errors[0]}</div>
