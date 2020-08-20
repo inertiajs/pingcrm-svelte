@@ -24,6 +24,7 @@
         "cross-env": "^7.0.2",
         "eslint": "^5.16.0",
         "laravel-mix": "^5.0.1",
+        "nanoid": "^3.1.12",
         "resolve-url-loader": "^3.1.0",
         "svelte-loader": "^2.13.6",
         "vue-template-compiler": "^2.6.11"
