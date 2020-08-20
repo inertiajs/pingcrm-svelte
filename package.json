@@ -11,20 +11,14 @@
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.1.7",
-        "@inertiajs/inertia-vue": "^0.1.2",
         "cross-env": "^5.2.1",
         "eslint": "^5.16.0",
-        "eslint-plugin-vue": "^5.2.3",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.15",
         "popper.js": "^1.16.0",
-        "portal-vue": "^1.5.1",
         "postcss-import": "^12.0.1",
         "postcss-nesting": "^7.0.1",
         "resolve-url-loader": "^2.3.2",
-        "tailwindcss": "^1.7.2",
-        "vue": "^2.6.11",
-        "vue-meta": "^2.3.1",
-        "vue-template-compiler": "^2.6.11"
+        "tailwindcss": "^1.7.2"
     }
 }
