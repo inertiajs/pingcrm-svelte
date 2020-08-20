@@ -1,0 +1,139 @@
+<script>
+  import { onMount } from 'svelte'
+  import { Inertia } from '@inertiajs/inertia'
+  import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
+  import { route } from '@/utils'
+  import FileInput from '@/Shared/FileInput.svelte'
+  import Icon from '@/Shared/Icon.svelte'
+  import Layout from '@/Shared/Layout.svelte'
+  import LoadingButton from '@/Shared/LoadingButton.svelte'
+  import SelectInput from '@/Shared/SelectInput.svelte'
+  import TextInput from '@/Shared/TextInput.svelte'
+  import TrashedMessage from '@/Shared/TrashedMessage.svelte'
+
+  export let user = {}
+
+  let sending = false
+  let form = remember({
+    first_name: user.first_name,
+    last_name: user.last_name,
+    email: user.email,
+    password: user.password,
+    owner: user.owner,
+    photo: null,
+  })
+
+  function submit() {
+    sending = true
+
+    const data = new FormData()
+    data.append('first_name', $form.first_name || '')
+    data.append('last_name', $form.last_name || '')
+    data.append('email', $form.email || '')
+    data.append('password', $form.password || '')
+    data.append('owner', $form.owner ? '1' : '0')
+    data.append('photo', $form.photo || '')
+    data.append('_method', 'put')
+
+    Inertia.post(route('users.update', user.id), data)
+      .then(() => {
+        sending = false
+
+        if (Object.keys($page.errors).length === 0) {
+          $form.photo = null
+          $form.password = null
+        }
+      })
+  }
+
+  function destroy() {
+    if (confirm('Are you sure you want to delete this user?')) {
+      Inertia.delete(route('users.destroy', user.id))
+    }
+  }
+
+  function restore() {
+    if (confirm('Are you sure you want to restore this user?')) {
+      Inertia.put(route('users.restore', user.id))
+    }
+  }
+</script>
+
+<Layout title={`${user.first_name} ${user.last_name}`}>
+  <div class="mb-8 flex justify-start max-w-3xl">
+    <h1 class="font-bold text-3xl">
+      <InertiaLink href={route('users')} class="text-indigo-400 hover:text-indigo-600">
+        Users
+      </InertiaLink>
+      <span class="text-indigo-400 font-medium">/</span>
+      {user.first_name} {user.last_name}
+    </h1>
+
+    {#if user.photo}
+      <img
+        class="block w-8 h-8 rounded-full ml-4"
+        src={user.photo}
+        alt={`${user.first_name} ${user.last_name} profile picture`}>
+    {/if}
+  </div>
+
+  {#if user.deleted_at}
+    <TrashedMessage class="mb-6" on:restore={restore}>
+      This user has been deleted.
+    </TrashedMessage>
+  {/if}
+
+  <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+    <form on:submit|preventDefault={submit}>
+      <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+        <TextInput
+          bind:value={$form.first_name}
+          errors={$page.errors.first_name}
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          label="First name:" />
+        <TextInput
+          bind:value={$form.last_name}
+          errors={$page.errors.last_name}
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          label="Last name:" />
+        <TextInput
+          bind:value={$form.email}
+          errors={$page.errors.email}
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          label="Email:" />
+        <TextInput
+          bind:value={$form.password}
+          errors={$page.errors.password}
+          autocomplete="new-password"
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          type="password"
+          label="Password:" />
+        <SelectInput
+          bind:value={$form.owner}
+          errors={$page.errors.owner}
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          label="Owner:">
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
+        </SelectInput>
+        <FileInput
+          bind:value={$form.photo}
+          errors={$page.errors.photo}
+          class="pr-6 pb-8 w-full lg:w-1/2"
+          accept="image/*"
+          label="Photo:" />
+      </div>
+      <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
+        {#if !user.deleted_at}
+          <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
+            Delete User
+          </button>
+        {/if}
+
+        <LoadingButton loading={sending} class="btn-indigo ml-auto" type="submit">
+          Update User
+        </LoadingButton>
+      </div>
+    </form>
+  </div>
+</Layout>
