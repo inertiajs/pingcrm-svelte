@@ -8,9 +8,13 @@
   export let label
   export let errors = []
 
+  let input
+
+  export const focus = () => input.focus()
+
   $: props = {
     ...$$restProps,
-    class: null,
+    class: 'form-select',
   }
 
   $: error = errors !== undefined && errors.length > 0
@@ -28,9 +32,9 @@
 
   <select
     {...props}
-    {id}
-    class="form-select"
+    bind:this={input}
     class:error
+    {id}
     {value}
     on:blur|preventDefault={update}>
     <slot selected={value} />

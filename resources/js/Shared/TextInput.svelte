@@ -3,10 +3,15 @@
   import Label from '@/Shared/Label.svelte'
 
   export let id = `text-input-${nanoid(5)}`
-  export let type = 'text'
   export let value
   export let label
+  export let type = 'text'
   export let errors = []
+
+  let input
+
+  export const focus = () => input.focus()
+  export const select = () => input.select()
 
   $: props = {
     ...$$restProps,
@@ -20,11 +25,12 @@
   }
 </script>
 
-<div class={$$restProps.class || ''}>
+<div class={$$restProps.class}>
   <Label {label} {id} />
 
   <input
     {...props}
+    bind:this={input}
     class:error
     {id}
     {type}

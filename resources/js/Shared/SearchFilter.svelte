@@ -9,7 +9,7 @@
 
   $: props = {
     ...$$restProps,
-    class: `flex items-center ${$$restProps.class}`,
+    class: `flex items-center ${$$restProps.class || ''}`,
   }
 
   function update(event) {
