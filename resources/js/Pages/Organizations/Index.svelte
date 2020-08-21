@@ -18,14 +18,12 @@
     <div class="mb-6 flex justify-between items-center">
       <SearchFilter
         class="w-full max-w-md mr-4"
-        bind:filters
-        let:close={closeFilter}>
+        bind:filters>
         <label for="trashed" class="block text-gray-700">Trashed:</label>
         <select
           id="trashed"
           class="mt-1 w-full form-select"
-          bind:value={filters.trashed}
-          on:blur={closeFilter}>
+          bind:value={filters.trashed}>
           <option value={null} />
           <option value="with">With Trashed</option>
           <option value="only">Only Trashed</option>
