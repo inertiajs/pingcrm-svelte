@@ -6,6 +6,4 @@ export function isEscKey(e) {
   return e.keyCode && e.keyCode === 27
 }
 
-export function route(...args) {
-  return window.route(...args).url()
-}
+export const route = window.route

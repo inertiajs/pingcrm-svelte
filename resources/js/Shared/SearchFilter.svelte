@@ -1,20 +1,47 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
+  import { Inertia } from '@inertiajs/inertia'
+  import { page } from '@inertiajs/inertia-svelte'
+  import { route } from '@/utils'
+  import pickBy from 'lodash/pickBy'
+  import debounce from 'lodash/debounce'
   import Dropdown from '@/Shared/Dropdown.svelte'
 
-  const dispatch = createEventDispatcher()
-
+  export let filters = {}
   export let maxWidth = 300
-  export let value
 
   $: props = {
     ...$$restProps,
     class: `flex items-center ${$$restProps.class || ''}`,
   }
 
-  function update(event) {
-    value = event.target.value
+  let readyToSearch = false
+  let form = {
+    search: $page.filters.search,
   }
+
+  $: if (filters) {
+    form = { ...form, ...filters }
+  }
+
+  $: search(form)
+
+  function reset() {
+    Object.keys(form).forEach(key => (form[key] = null))
+    Object.keys(filters).forEach(key => (filters[key] = null))
+  }
+
+  const search = debounce(form => {
+    if (!readyToSearch) {
+      readyToSearch = true
+      return
+    }
+
+    let query = pickBy(form)
+
+    Inertia.replace(
+      route(route().current(), Object.keys(query).length ? query : { remember: 'forget' })
+    )
+  }, 150)
 </script>
 
 <div {...props}>
@@ -43,14 +70,13 @@
       type="text"
       name="search"
       placeholder="Search…"
-      {value}
-      on:input={update} />
+      bind:value={form.search} />
   </div>
 
   <button
     class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500"
     type="button"
-    on:click={() => dispatch('reset')}>
+    on:click={reset}>
     Reset
   </button>
 </div>
