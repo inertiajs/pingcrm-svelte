@@ -5,7 +5,7 @@
 
   export let placement = 'bottom-end'
   export let boundary = 'scrollParent'
-  export let autoClose = true
+  export let autoclose = true
 
   let button
   let dropdown
@@ -53,7 +53,7 @@
 {#if show}
   <div bind:this={portal}>
     <div style="position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 99998; background: black; opacity: .2" on:click={() => show = false} />
-    <div bind:this={dropdown} style="position: absolute; z-index: 99999;" on:click|stopPropagation={() => show = autoClose ? false : true}>
+    <div bind:this={dropdown} style="position: absolute; z-index: 99999;" on:click|stopPropagation={() => show = autoclose ? false : true}>
       <slot name="dropdown" />
     </div>
   </div>
