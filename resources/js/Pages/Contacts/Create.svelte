@@ -49,18 +49,17 @@
                     label="First name:" />
                 <TextInput
                     bind:value={$form.last_name}
-                    errors={$page.errors.first_name}
+                    errors={$page.errors.last_name}
                     class="pr-6 pb-8 w-full lg:w-1/2"
                     label="Last name:" />
                 <SelectInput
                     bind:value={$form.organization_id}
                     errors={$page.errors.organization_id}
                     class="pr-6 pb-8 w-full lg:w-1/2"
-                    label="Organization:"
-                    let:selected>
+                    label="Organization:">
                     <option value={null} />
                     {#each organizations as organization (organization.id)}
-                        <option value={organization.id} selected={selected === organization.id}>{organization.name}</option>
+                        <option value={organization.id}>{organization.name}</option>
                     {/each}
                 </SelectInput>
                 <TextInput
@@ -71,36 +70,40 @@
                 <TextInput
                     bind:value={$form.phone}
                     errors={$page.errors.phone}
-                    class="pr-6 pb-8 w-full lg:w-1/2" label="Phone:" />
+                    class="pr-6 pb-8 w-full lg:w-1/2"
+                    label="Phone:" />
                 <TextInput
                     bind:value={$form.address}
                     errors={$page.errors.address}
-                    class="pr-6 pb-8 w-full lg:w-1/2" label="Address:" />
+                    class="pr-6 pb-8 w-full lg:w-1/2"
+                    label="Address:" />
                 <TextInput
                     bind:value={$form.city}
                     errors={$page.errors.city}
-                    class="pr-6 pb-8 w-full lg:w-1/2" label="City:" />
+                    class="pr-6 pb-8 w-full lg:w-1/2"
+                    label="City:" />
                 <TextInput
                     bind:value={$form.region}
                     errors={$page.errors.region}
-                    class="pr-6 pb-8 w-full lg:w-1/2" label="Province/State:" />
+                    class="pr-6 pb-8 w-full lg:w-1/2"
+                    label="Province/State:" />
                 <SelectInput
                     bind:value={$form.country}
                     errors={$page.errors.country}
                     class="pr-6 pb-8 w-full lg:w-1/2"
-                    label="Country:"
-                    let:selected>
+                    label="Country:">
                     <option value={null} />
-                    <option value="CA" selected={selected === 'CA'}>Canada</option>
-                    <option value="US" selected={selected === 'US'}>United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="US">United States</option>
                 </SelectInput>
                 <TextInput
                     bind:value={$form.postal_code}
                     errors={$page.errors.postal_code}
-                    class="pr-6 pb-8 w-full lg:w-1/2" label="Postal code:" />
+                    class="pr-6 pb-8 w-full lg:w-1/2"
+                    label="Postal code:" />
             </div>
             <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex justify-end items-center">
-                <LoadingButton loading={sending} class="btn-indigo ml-auto" type="submit">Create Contact</LoadingButton>
+                <LoadingButton loading={sending} class="btn-indigo" type="submit">Create Contact</LoadingButton>
             </div>
         </form>
     </div>
