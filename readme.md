@@ -1,4 +1,4 @@
-# Ping CRM
+# Ping CRM - Svelte
 
 A demo application to illustrate how Inertia.js works.
 
@@ -9,8 +9,8 @@ A demo application to illustrate how Inertia.js works.
 Clone the repo locally:
 
 ```sh
-git clone https://github.com/inertiajs/pingcrm.git pingcrm
-cd pingcrm
+git clone https://github.com/inertiajs/pingcrm-svelte.git pingcrm-svelte
+cd pingcrm-svelte
 ```
 
 Install PHP dependencies:
