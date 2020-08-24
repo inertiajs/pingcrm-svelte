@@ -3,12 +3,10 @@
     import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
     import { route } from '@/utils'
     import FileInput from '@/Shared/FileInput.svelte'
-    import Icon from '@/Shared/Icon.svelte'
     import Layout from '@/Shared/Layout.svelte'
     import LoadingButton from '@/Shared/LoadingButton.svelte'
     import SelectInput from '@/Shared/SelectInput.svelte'
     import TextInput from '@/Shared/TextInput.svelte'
-    import TrashedMessage from '@/Shared/TrashedMessage.svelte'
 
     let sending = false
     let form = remember({
