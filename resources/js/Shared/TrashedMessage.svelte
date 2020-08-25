@@ -16,7 +16,11 @@
       <slot />
     </div>
   </div>
-  <button class="text-sm text-yellow-800 hover:underline" tabindex="-1" type="button" on:click={restore}>
+  <button
+    class="text-sm text-yellow-800 hover:underline"
+    tabindex="-1"
+    type="button"
+    on:click={restore}>
     Restore
   </button>
 </div>

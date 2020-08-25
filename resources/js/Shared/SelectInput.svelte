@@ -30,13 +30,7 @@
 <div class={$$restProps.class}>
   <Label {label} {id} />
 
-  <select
-    {...props}
-    bind:this={input}
-    class:error
-    {id}
-    {value}
-    on:blur|preventDefault={update}>
+  <select {...props} bind:this={input} class:error {id} {value} on:blur|preventDefault={update}>
     <slot selected={value} />
   </select>
 

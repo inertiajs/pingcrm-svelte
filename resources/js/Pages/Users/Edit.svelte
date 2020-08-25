@@ -33,15 +33,14 @@
     data.append('photo', $form.photo || '')
     data.append('_method', 'put')
 
-    Inertia.post(route('users.update', user.id), data)
-      .then(() => {
-        sending = false
+    Inertia.post(route('users.update', user.id), data).then(() => {
+      sending = false
 
-        if (Object.keys($page.errors).length === 0) {
-          $form.photo = null
-          $form.password = null
-        }
-      })
+      if (Object.keys($page.errors).length === 0) {
+        $form.photo = null
+        $form.password = null
+      }
+    })
   }
 
   function destroy() {
@@ -71,14 +70,12 @@
       <img
         class="block w-8 h-8 rounded-full ml-4"
         src={user.photo}
-        alt={`${user.first_name} ${user.last_name} profile picture`}>
+        alt={`${user.first_name} ${user.last_name} profile picture`} />
     {/if}
   </div>
 
   {#if user.deleted_at}
-    <TrashedMessage class="mb-6" on:restore={restore}>
-      This user has been deleted.
-    </TrashedMessage>
+    <TrashedMessage class="mb-6" on:restore={restore}>This user has been deleted.</TrashedMessage>
   {/if}
 
   <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
@@ -124,7 +121,11 @@
       </div>
       <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
         {#if !user.deleted_at}
-          <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
+          <button
+            class="text-red-600 hover:underline"
+            tabindex="-1"
+            type="button"
+            on:click={destroy}>
             Delete User
           </button>
         {/if}

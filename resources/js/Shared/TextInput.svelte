@@ -28,14 +28,7 @@
 <div class={$$restProps.class}>
   <Label {label} {id} />
 
-  <input
-    {...props}
-    bind:this={input}
-    class:error
-    {id}
-    {type}
-    {value}
-    on:input={update} />
+  <input {...props} bind:this={input} class:error {id} {type} {value} on:input={update} />
 
   {#if error}
     <div class="form-error">{errors[0]}</div>

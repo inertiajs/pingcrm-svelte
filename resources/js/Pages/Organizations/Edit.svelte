@@ -25,8 +25,7 @@
 
   function submit() {
     sending = true
-    Inertia.put(route('organizations.update', organization.id), $form)
-      .then(() => sending = false)
+    Inertia.put(route('organizations.update', organization.id), $form).then(() => (sending = false))
   }
 
   function destroy() {
@@ -108,7 +107,11 @@
       </div>
       <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
         {#if !organization.deleted_at}
-          <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
+          <button
+            class="text-red-600 hover:underline"
+            tabindex="-1"
+            type="button"
+            on:click={destroy}>
             Delete Organization
           </button>
         {/if}
@@ -131,7 +134,9 @@
       {#each organization.contacts as contact (contact.id)}
         <tr class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
-            <InertiaLink href={route('contacts.edit', contact.id)} class="px-6 py-4 flex items-center focus:text-indigo-500">
+            <InertiaLink
+              href={route('contacts.edit', contact.id)}
+              class="px-6 py-4 flex items-center focus:text-indigo-500">
               {contact.name}
               {#if contact.deleted_at}
                 <Icon name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
@@ -139,17 +144,26 @@
             </InertiaLink>
           </td>
           <td class="border-t">
-            <InertiaLink href={route('contacts.edit', contact.id)} class="px-6 py-4 flex items-center" tabindex="-1">
+            <InertiaLink
+              href={route('contacts.edit', contact.id)}
+              class="px-6 py-4 flex items-center"
+              tabindex="-1">
               {contact.city}
             </InertiaLink>
           </td>
           <td class="border-t">
-            <InertiaLink href={route('contacts.edit', contact.id)} class="px-6 py-4 flex items-center" tabindex="-1">
+            <InertiaLink
+              href={route('contacts.edit', contact.id)}
+              class="px-6 py-4 flex items-center"
+              tabindex="-1">
               {contact.phone}
             </InertiaLink>
           </td>
           <td class="border-t w-px">
-            <InertiaLink href={route('contacts.edit', contact.id)} class="px-4 flex items-center" tabindex="-1">
+            <InertiaLink
+              href={route('contacts.edit', contact.id)}
+              class="px-4 flex items-center"
+              tabindex="-1">
               <Icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
             </InertiaLink>
           </td>

@@ -4,7 +4,7 @@
 
   $: props = {
     ...$$restProps,
-    class: `form-label ${$$restProps.class || ''}`
+    class: `form-label ${$$restProps.class || ''}`,
   }
 </script>
 

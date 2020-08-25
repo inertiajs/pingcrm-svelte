@@ -21,16 +21,13 @@
 
   function submit() {
     sending = true
-    Inertia.post(route('organizations.store'), $form)
-      .then(() => sending = false)
+    Inertia.post(route('organizations.store'), $form).then(() => (sending = false))
   }
 </script>
 
 <Layout title="Create Organization">
   <h1 class="mb-8 font-bold text-3xl">
-    <InertiaLink
-      href={route('organizations')}
-      class="text-indigo-400 hover:text-indigo-600">
+    <InertiaLink href={route('organizations')} class="text-indigo-400 hover:text-indigo-600">
       Organizations
     </InertiaLink>
     <span class="text-indigo-400 font-medium">/</span>
