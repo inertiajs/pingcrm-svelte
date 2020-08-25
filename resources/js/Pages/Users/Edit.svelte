@@ -21,8 +21,6 @@
     photo: null,
   })
 
-  $: console.log($form)
-
   function submit() {
     sending = true
 

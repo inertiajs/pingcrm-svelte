@@ -16,15 +16,15 @@
 <Layout title="Users">
     <h1 class="mb-8 font-bold text-3xl">Users</h1>
     <div class="mb-6 flex justify-between items-center">
-        <SearchFilter class="w-full max-w-md mr-4" bind:filters let:close={closeFilter}>
+        <SearchFilter class="w-full max-w-md mr-4" bind:filters>
             <label for="role" class="block text-gray-700">Role:</label>
-            <select id="role" class="mt-1 w-full form-select" bind:value={filters.role} on:blur={closeFilter}>
+            <select id="role" class="mt-1 w-full form-select" bind:value={filters.role}>
                 <option value={null} />
                 <option value="user">User</option>
                 <option value="owner">Owner</option>
             </select>
             <label for="trashed" class="mt-4 block text-gray-700">Trashed:</label>
-            <select id="trashed" class="mt-1 w-full form-select" bind:value={filters.trashed} on:blur={closeFilter}>
+            <select id="trashed" class="mt-1 w-full form-select" bind:value={filters.trashed}>
                 <option value={null} />
                 <option value="with">With Trashed</option>
                 <option value="only">Only Trashed</option>
@@ -62,7 +62,7 @@
                     </td>
                     <td class="border-t">
                         <InertiaLink class="px-6 py-4 flex items-center" href={route('users.edit', user.id)} tabindex="-1">
-                            { user.owner == true ? 'Owner' : 'User' }
+                            { user.owner ? 'Owner' : 'User' }
                         </InertiaLink>
                     </td>
                     <td class="border-t w-px">

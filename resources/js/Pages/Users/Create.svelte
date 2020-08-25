@@ -14,7 +14,7 @@
         last_name: null,
         email: null,
         password: null,
-        owner: '0',
+        owner: false,
         photo: null,
     })
 
@@ -31,8 +31,7 @@
 
         Inertia.post(route('users.store'), data)
             .then(() => sending = false)
-  }
-
+    }
 </script>
 
 <Layout title="Create User">
@@ -72,10 +71,9 @@
                     bind:value={$form.owner}
                     errors={$page.errors.owner}
                     class="pr-6 pb-8 w-full lg:w-1/2"
-                    label="Owner:"
-                    let:selected>
-                    <option value="1" selected={selected === '1'}>Yes</option>
-                    <option value="0" selected={selected === '0'}>No</option>
+                    label="Owner:">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </SelectInput>
                 <FileInput
                     bind:value={$form.photo}
