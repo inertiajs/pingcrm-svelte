@@ -1,0 +1,12 @@
+{
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "endOfLine": "auto",
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "svelteAllowShorthand": true,
+  "svelteBracketNewLine": false,
+  "svelteSortOrder": "scripts-markup-styles",
+  "svelteStrictMode": false
+}
