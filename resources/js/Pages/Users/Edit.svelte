@@ -1,10 +1,8 @@
 <script>
-  import { onMount } from 'svelte'
   import { Inertia } from '@inertiajs/inertia'
   import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import FileInput from '@/Shared/FileInput.svelte'
-  import Icon from '@/Shared/Icon.svelte'
   import Layout from '@/Shared/Layout.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import SelectInput from '@/Shared/SelectInput.svelte'
@@ -23,6 +21,8 @@
     photo: null,
   })
 
+  $: console.log($form)
+
   function submit() {
     sending = true
 
@@ -31,7 +31,7 @@
     data.append('last_name', $form.last_name || '')
     data.append('email', $form.email || '')
     data.append('password', $form.password || '')
-    data.append('owner', $form.owner ? '1' : '0')
+    data.append('owner', $form.owner || false)
     data.append('photo', $form.photo || '')
     data.append('_method', 'put')
 
@@ -112,9 +112,10 @@
           bind:value={$form.owner}
           errors={$page.errors.owner}
           class="pr-6 pb-8 w-full lg:w-1/2"
-          label="Owner:">
-          <option value={true}>Yes</option>
-          <option value={false}>No</option>
+          label="Owner:"
+          let:selected>
+          <option value="1" selected={selected === true}>Yes</option>
+          <option value="0" selected={selected === false}>No</option>
         </SelectInput>
         <FileInput
           bind:value={$form.photo}
