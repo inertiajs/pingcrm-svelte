@@ -1,36 +1,36 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prettier": "prettier --write ./resources/js/**/*"
-    },
-    "dependencies": {
-        "@inertiajs/inertia": "^0.2.1",
-        "@inertiajs/inertia-svelte": "^0.2.0",
-        "lodash": "^4.17.15",
-        "popper.js": "^1.16.0",
-        "postcss-import": "^12.0.1",
-        "postcss-nesting": "^7.0.1",
-        "svelte": "^3.24.1",
-        "tailwindcss": "^1.7.3"
-    },
-    "devDependencies": {
-        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "cross-env": "^7.0.2",
-        "eslint": "^5.16.0",
-        "fit-textarea": "^2.0.0",
-        "laravel-mix": "^5.0.5",
-        "nanoid": "^3.1.12",
-        "prettier": "^2.1.0",
-        "prettier-plugin-svelte": "^1.1.0",
-        "resolve-url-loader": "^3.1.0",
-        "svelte-loader": "^2.13.6",
-        "vue-template-compiler": "^2.6.12"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prettier": "prettier --write ./resources/js/**/*"
+  },
+  "dependencies": {
+    "@inertiajs/inertia": "^0.2.3",
+    "@inertiajs/inertia-svelte": "^0.3.0",
+    "lodash": "^4.17.15",
+    "popper.js": "^1.16.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nesting": "^7.0.1",
+    "svelte": "^3.24.1",
+    "tailwindcss": "^1.8.6"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^5.16.0",
+    "fit-textarea": "^2.0.0",
+    "laravel-mix": "^5.0.5",
+    "nanoid": "^3.1.12",
+    "prettier": "^2.1.1",
+    "prettier-plugin-svelte": "^1.2.1",
+    "resolve-url-loader": "^3.1.0",
+    "svelte-loader": "^2.13.6",
+    "vue-template-compiler": "^2.6.12"
+  }
 }
