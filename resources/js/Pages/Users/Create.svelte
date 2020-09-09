@@ -28,7 +28,7 @@
     data.append('last_name', $form.last_name || '')
     data.append('email', $form.email || '')
     data.append('password', $form.password || '')
-    data.append('owner', $form.owner || false)
+    data.append('owner', $form.owner ? 1 : 0)
     data.append('photo', $form.photo || '')
 
     Inertia.post(route('users.store'), data).then(() => (sending = false))
@@ -74,8 +74,8 @@
           error={errors.owner}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Owner:">
-          <option value="1">Yes</option>
-          <option value="0">No</option>
+          <option value={true}>Yes</option>
+          <option value={false}>No</option>
         </SelectInput>
         <FileInput
           bind:value={$form.photo}
