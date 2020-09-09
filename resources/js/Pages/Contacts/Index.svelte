@@ -1,59 +1,24 @@
 <script>
-  import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink } from '@inertiajs/inertia-svelte'
+  import { InertiaLink, page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
-  import pickBy from 'lodash/pickBy'
-  import throttle from 'lodash/throttle'
   import Icon from '@/Shared/Icon.svelte'
   import Layout from '@/Shared/Layout.svelte'
   import Pagination from '@/Shared/Pagination.svelte'
   import SearchFilter from '@/Shared/SearchFilter.svelte'
 
-  export let filters = {}
   export let contacts = []
 
-  let form = {
-    search: filters.search,
-    trashed: filters.trashed,
+  let filters = {
+    trashed: $page.filters.trashed,
   }
-
-  $: search(form)
-
-  function reset(filters) {
-    Object.keys(form).forEach((key) => (form[key] = null))
-  }
-
-  const search = throttle((form) => {
-    let query = pickBy(form)
-
-    // TODO: fix pagination bug
-    Inertia.replace(
-      route(
-        'contacts',
-        Object.keys(query).length
-          ? query
-          : {
-              remember: 'forget',
-            }
-      )
-    )
-  }, 150)
 </script>
 
 <Layout title="Contacts">
   <h1 class="mb-8 font-bold text-3xl">Contacts</h1>
   <div class="mb-6 flex justify-between items-center">
-    <SearchFilter
-      bind:value={form.search}
-      class="w-full max-w-md mr-4"
-      on:reset={reset}
-      let:close={closeFilter}>
+    <SearchFilter class="w-full max-w-md mr-4" bind:filters>
       <label for="trashed" class="block text-gray-700">Trashed:</label>
-      <select
-        id="trashed"
-        bind:value={form.trashed}
-        class="mt-1 w-full form-select"
-        on:blur={closeFilter}>
+      <select id="trashed" class="mt-1 w-full form-select" bind:value={filters.trashed}>
         <option value={null} />
         <option value="with">With Trashed</option>
         <option value="only">Only Trashed</option>
