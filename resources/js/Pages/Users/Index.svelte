@@ -1,6 +1,6 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Users' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
 </script>
 
 <script>
@@ -10,6 +10,8 @@
   import SearchFilter from '@/Shared/SearchFilter.svelte'
 
   export let users = []
+
+  $title = 'Users'
 
   let filters = {
     role: $page.filters.role,

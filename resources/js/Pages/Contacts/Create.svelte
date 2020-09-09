@@ -1,6 +1,6 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Create Contact' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
 </script>
 
 <script>
@@ -13,6 +13,8 @@
 
   export let errors = {}
   export let organizations = []
+
+  $title = 'Create Contact'
 
   let sending = false
   let form = remember({

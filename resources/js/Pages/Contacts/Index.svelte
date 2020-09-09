@@ -1,6 +1,6 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Contacts' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
 </script>
 
 <script>
@@ -11,6 +11,8 @@
   import SearchFilter from '@/Shared/SearchFilter.svelte'
 
   export let contacts = []
+
+  $title = 'Contacts'
 
   let filters = {
     trashed: $page.filters.trashed,

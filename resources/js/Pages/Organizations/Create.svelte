@@ -1,6 +1,6 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Create Organization' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
 </script>
 
 <script>
@@ -12,6 +12,8 @@
   import TextInput from '@/Shared/TextInput.svelte'
 
   export let errors = {}
+
+  $title = 'Create Organization'
 
   let sending = false
   let form = remember({

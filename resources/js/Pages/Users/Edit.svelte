@@ -1,9 +1,13 @@
+<script context="module">
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
+</script>
+
 <script>
   import { Inertia } from '@inertiajs/inertia'
   import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import FileInput from '@/Shared/FileInput.svelte'
-  import Layout from '@/Shared/Layout.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import SelectInput from '@/Shared/SelectInput.svelte'
   import TextInput from '@/Shared/TextInput.svelte'
@@ -11,6 +15,8 @@
 
   export let errors = {}
   export let user = {}
+
+  $: $title = user ? `${user.first_name} ${user.last_name}` : null
 
   let sending = false
   let form = remember({

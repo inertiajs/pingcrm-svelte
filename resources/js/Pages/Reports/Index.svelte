@@ -1,6 +1,10 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Reports' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
+</script>
+
+<script>
+  $title = 'Reports'
 </script>
 
 <div>

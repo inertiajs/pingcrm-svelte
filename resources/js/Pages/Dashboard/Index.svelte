@@ -1,10 +1,12 @@
 <script context="module">
-  import Layout from '@/Shared/Layout.svelte'
-  export const layout = (h, page) => h(Layout, { title: 'Dashboard' }, [page])
+  import Layout, { title } from '@/Shared/Layout.svelte'
+  export const layout = Layout
 </script>
 
 <script>
   import { InertiaLink } from '@inertiajs/inertia-svelte'
+
+  $title = 'Dashboard'
 </script>
 
 <h1 class="mb-8 font-bold text-3xl">Dashboard</h1>
