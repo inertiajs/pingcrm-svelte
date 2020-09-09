@@ -1,3 +1,8 @@
+<script context="module">
+  import { writable } from 'svelte/store'
+  export const title = writable(null)
+</script>
+
 <script>
   import { InertiaLink, page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
@@ -6,12 +11,10 @@
   import Icon from '@/Shared/Icon.svelte'
   import Logo from '@/Shared/Logo.svelte'
   import MainMenu from '@/Shared/MainMenu.svelte'
-
-  export let title
 </script>
 
 <svelte:head>
-  <title>{title ? `${title} - Ping CRM` : 'Ping CRM'}</title>
+  <title>{$title ? `${$title} - Ping CRM` : 'Ping CRM'}</title>
 </svelte:head>
 
 <div class="flex flex-col">
