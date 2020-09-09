@@ -57,84 +57,79 @@
   }
 </script>
 
-<Layout title={`${user.first_name} ${user.last_name}`}>
-  <div class="mb-8 flex justify-start max-w-3xl">
-    <h1 class="font-bold text-3xl">
-      <InertiaLink href={route('users')} class="text-indigo-400 hover:text-indigo-600">
-        Users
-      </InertiaLink>
-      <span class="text-indigo-400 font-medium">/</span>
-      {user.first_name} {user.last_name}
-    </h1>
+<div class="mb-8 flex justify-start max-w-3xl">
+  <h1 class="font-bold text-3xl">
+    <InertiaLink href={route('users')} class="text-indigo-400 hover:text-indigo-600">
+      Users
+    </InertiaLink>
+    <span class="text-indigo-400 font-medium">/</span>
+    {user.first_name}
+    {user.last_name}
+  </h1>
 
-    {#if user.photo}
-      <img
-        class="block w-8 h-8 rounded-full ml-4"
-        src={user.photo}
-        alt={`${user.first_name} ${user.last_name} profile picture`} />
-    {/if}
-  </div>
-
-  {#if user.deleted_at}
-    <TrashedMessage class="mb-6" on:restore={restore}>This user has been deleted.</TrashedMessage>
+  {#if user.photo}
+    <img
+      class="block w-8 h-8 rounded-full ml-4"
+      src={user.photo}
+      alt={`${user.first_name} ${user.last_name} profile picture`} />
   {/if}
+</div>
 
-  <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-    <form on:submit|preventDefault={submit}>
-      <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-        <TextInput
-          bind:value={$form.first_name}
-          error={errors.first_name}
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          label="First name:" />
-        <TextInput
-          bind:value={$form.last_name}
-          error={errors.last_name}
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          label="Last name:" />
-        <TextInput
-          bind:value={$form.email}
-          error={errors.email}
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          label="Email:" />
-        <TextInput
-          bind:value={$form.password}
-          error={errors.password}
-          autocomplete="new-password"
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          type="password"
-          label="Password:" />
-        <SelectInput
-          bind:value={$form.owner}
-          error={errors.owner}
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          label="Owner:"
-          let:selected>
-          <option value={true} selected={selected === true}>Yes</option>
-          <option value={false} selected={selected === false}>No</option>
-        </SelectInput>
-        <FileInput
-          bind:value={$form.photo}
-          error={errors.photo}
-          class="pr-6 pb-8 w-full lg:w-1/2"
-          accept="image/*"
-          label="Photo:" />
-      </div>
-      <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
-        {#if !user.deleted_at}
-          <button
-            class="text-red-600 hover:underline"
-            tabindex="-1"
-            type="button"
-            on:click={destroy}>
-            Delete User
-          </button>
-        {/if}
+{#if user.deleted_at}
+  <TrashedMessage class="mb-6" on:restore={restore}>This user has been deleted.</TrashedMessage>
+{/if}
 
-        <LoadingButton loading={sending} class="btn-indigo ml-auto" type="submit">
-          Update User
-        </LoadingButton>
-      </div>
-    </form>
-  </div>
-</Layout>
+<div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+  <form on:submit|preventDefault={submit}>
+    <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+      <TextInput
+        bind:value={$form.first_name}
+        error={errors.first_name}
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        label="First name:" />
+      <TextInput
+        bind:value={$form.last_name}
+        error={errors.last_name}
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        label="Last name:" />
+      <TextInput
+        bind:value={$form.email}
+        error={errors.email}
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        label="Email:" />
+      <TextInput
+        bind:value={$form.password}
+        error={errors.password}
+        autocomplete="new-password"
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        type="password"
+        label="Password:" />
+      <SelectInput
+        bind:value={$form.owner}
+        error={errors.owner}
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        label="Owner:"
+        let:selected>
+        <option value={true} selected={selected === true}>Yes</option>
+        <option value={false} selected={selected === false}>No</option>
+      </SelectInput>
+      <FileInput
+        bind:value={$form.photo}
+        error={errors.photo}
+        class="pr-6 pb-8 w-full lg:w-1/2"
+        accept="image/*"
+        label="Photo:" />
+    </div>
+    <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
+      {#if !user.deleted_at}
+        <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
+          Delete User
+        </button>
+      {/if}
+
+      <LoadingButton loading={sending} class="btn-indigo ml-auto" type="submit">
+        Update User
+      </LoadingButton>
+    </div>
+  </form>
+</div>
