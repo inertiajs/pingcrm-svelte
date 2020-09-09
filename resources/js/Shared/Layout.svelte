@@ -38,26 +38,32 @@
       <div
         class="bg-white border-b w-full p-4 md:py-0 md:px-12 text-sm md:text-md flex justify-between
         items-center">
-        <div class="mt-1 mr-4">{$page.auth.user.account.name}</div>
+        {#if $page.auth}
+          <div class="mt-1 mr-4">{$page.auth.user.account.name}</div>
+        {/if}
         <Dropdown class="mt-1" placement="bottom-end">
           <div class="flex items-center cursor-pointer select-none group">
             <div
               class="text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600 mr-1
               whitespace-no-wrap">
-              <span>{$page.auth.user.first_name}</span>
-              <span class="hidden md:inline">{$page.auth.user.last_name}</span>
+              {#if $page.auth}
+                <span>{$page.auth.user.first_name}</span>
+                <span class="hidden md:inline">{$page.auth.user.last_name}</span>
+              {/if}
             </div>
             <Icon
               name="cheveron-down"
               class="w-5 h-5 group-hover:fill-indigo-600 fill-gray-700 focus:fill-indigo-600" />
           </div>
           <div slot="dropdown" class="mt-2 py-2 shadow-xl bg-white rounded text-sm">
-            <a
-              use:inertia
-              href={route('users.edit', $page.auth.user.id)}
-              class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
-              My Profile
-            </a>
+            {#if $page.auth}
+              <a
+                use:inertia
+                href={route('users.edit', $page.auth.user.id)}
+                class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
+                My Profile
+              </a>
+            {/if}
             <a
               use:inertia
               href={route('users')}
