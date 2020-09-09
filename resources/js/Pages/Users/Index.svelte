@@ -4,7 +4,7 @@
 </script>
 
 <script>
-  import { InertiaLink, page } from '@inertiajs/inertia-svelte'
+  import { inertia, page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Icon from '@/Shared/Icon.svelte'
   import SearchFilter from '@/Shared/SearchFilter.svelte'
@@ -35,10 +35,10 @@
       <option value="only">Only Trashed</option>
     </select>
   </SearchFilter>
-  <InertiaLink class="btn-indigo" href={route('users.create')}>
+  <a use:inertia href={route('users.create')} class="btn-indigo">
     <span>Create</span>
     <span class="hidden md:inline">User</span>
-  </InertiaLink>
+  </a>
 </div>
 <div class="bg-white rounded shadow overflow-x-auto">
   <table class="w-full whitespace-no-wrap">
@@ -50,9 +50,10 @@
     {#each users as user (user.id)}
       <tr class="hover:bg-gray-100 focus-within:bg-gray-100">
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center focus:text-indigo-500"
-            href={route('users.edit', user.id)}>
+          <a
+            use:inertia
+            href={route('users.edit', user.id)}
+            class="px-6 py-4 flex items-center focus:text-indigo-500">
             {#if user.photo}
               <img class="block w-5 h-5 rounded-full mr-2 -my-2" src={user.photo} />
             {/if}
@@ -60,31 +61,34 @@
             {#if user.deleted_at}
               <Icon name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
             {/if}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center"
+          <a
+            use:inertia
             href={route('users.edit', user.id)}
+            class="px-6 py-4 flex items-center"
             tabindex="-1">
             {user.email}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center"
+          <a
+            use:inertia
             href={route('users.edit', user.id)}
+            class="px-6 py-4 flex items-center"
             tabindex="-1">
             {user.owner ? 'Owner' : 'User'}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t w-px">
-          <InertiaLink
-            class="px-4 flex items-center"
+          <a
+            use:inertia
             href={route('users.edit', user.id)}
+            class="px-4 flex items-center"
             tabindex="-1">
             <Icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
-          </InertiaLink>
+          </a>
         </td>
       </tr>
     {/each}

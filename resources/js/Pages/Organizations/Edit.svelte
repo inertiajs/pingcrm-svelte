@@ -5,7 +5,7 @@
 
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
+  import { inertia, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Icon from '@/Shared/Icon.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
@@ -49,9 +49,9 @@
 </script>
 
 <h1 class="mb-8 font-bold text-3xl">
-  <InertiaLink href={route('organizations')} class="text-indigo-400 hover:text-indigo-600">
+  <a use:inertia href={route('organizations')} class="text-indigo-400 hover:text-indigo-600">
     Organizations
-  </InertiaLink>
+  </a>
   <span class="text-indigo-400 font-medium">/</span>
   {organization.name}
 </h1>
@@ -136,38 +136,42 @@
     {#each organization.contacts as contact (contact.id)}
       <tr class="hover:bg-gray-100 focus-within:bg-gray-100">
         <td class="border-t">
-          <InertiaLink
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
             class="px-6 py-4 flex items-center focus:text-indigo-500">
             {contact.name}
             {#if contact.deleted_at}
               <Icon name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
             {/if}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
             {contact.city}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
             {contact.phone}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t w-px">
-          <InertiaLink
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
             class="px-4 flex items-center"
             tabindex="-1">
             <Icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
-          </InertiaLink>
+          </a>
         </td>
       </tr>
     {/each}

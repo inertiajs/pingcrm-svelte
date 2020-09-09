@@ -1,5 +1,5 @@
 <script>
-  import { InertiaLink } from '@inertiajs/inertia-svelte'
+  import { inertia } from '@inertiajs/inertia-svelte'
 
   export let links = []
 </script>
@@ -13,11 +13,12 @@
         {link.label}
       </div>
     {:else}
-      <InertiaLink
+      <a
+        use:inertia
         href={link.url}
         class={`mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500 ${link.active && 'bg-white'} ${link.label === 'Next' && 'ml-auto'}`}>
         {link.label}
-      </InertiaLink>
+      </a>
     {/if}
   {/each}
 </div>

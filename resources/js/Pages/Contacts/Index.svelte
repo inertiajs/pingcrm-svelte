@@ -4,7 +4,7 @@
 </script>
 
 <script>
-  import { InertiaLink, page } from '@inertiajs/inertia-svelte'
+  import { inertia, page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Icon from '@/Shared/Icon.svelte'
   import Pagination from '@/Shared/Pagination.svelte'
@@ -29,10 +29,10 @@
       <option value="only">Only Trashed</option>
     </select>
   </SearchFilter>
-  <InertiaLink class="btn-indigo" href={route('contacts.create')}>
+  <a use:inertia href={route('contacts.create')} class="btn-indigo">
     <span>Create</span>
     <span class="hidden md:inline">Contact</span>
-  </InertiaLink>
+  </a>
 </div>
 <div class="bg-white rounded shadow overflow-x-auto">
   <table class="w-full whitespace-no-wrap">
@@ -45,46 +45,51 @@
     {#each contacts.data as contact (contact.id)}
       <tr class="hover:bg-gray-100 focus-within:bg-gray-100">
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center focus:text-indigo-500"
-            href={route('contacts.edit', contact.id)}>
+          <a
+            use:inertia
+            href={route('contacts.edit', contact.id)}
+            class="px-6 py-4 flex items-center focus:text-indigo-500">
             {contact.name}
             {#if contact.deleted_at}
               <Icon name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
             {/if}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center"
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
+            class="px-6 py-4 flex items-center"
             tabindex="-1">
             {#if contact.organization}{contact.organization.name}{/if}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center"
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
+            class="px-6 py-4 flex items-center"
             tabindex="-1">
             {contact.city}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t">
-          <InertiaLink
-            class="px-6 py-4 flex items-center"
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
+            class="px-6 py-4 flex items-center"
             tabindex="-1">
             {contact.phone}
-          </InertiaLink>
+          </a>
         </td>
         <td class="border-t w-px">
-          <InertiaLink
-            class="px-4 flex items-center"
+          <a
+            use:inertia
             href={route('contacts.edit', contact.id)}
+            class="px-4 flex items-center"
             tabindex="-1">
             <Icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
-          </InertiaLink>
+          </a>
         </td>
       </tr>
     {/each}

@@ -4,7 +4,7 @@
 </script>
 
 <script>
-  import { InertiaLink, page } from '@inertiajs/inertia-svelte'
+  import { inertia, page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Dropdown from '@/Shared/Dropdown.svelte'
   import FlashMessages from '@/Shared/FlashMessages.svelte'
@@ -23,9 +23,9 @@
       <div
         class="bg-indigo-900 md:flex-shrink-0 md:w-56 px-6 py-4 flex items-center justify-between
         md:justify-center">
-        <InertiaLink href="/" class="mt-1">
+        <a use:inertia href="/" class="mt-1">
           <Logo class="fill-white" width="120" height="28" />
-        </InertiaLink>
+        </a>
         <Dropdown class="md:hidden" placement="bottom-end">
           <svg class="fill-white w-6 h-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -52,22 +52,24 @@
               class="w-5 h-5 group-hover:fill-indigo-600 fill-gray-700 focus:fill-indigo-600" />
           </div>
           <div slot="dropdown" class="mt-2 py-2 shadow-xl bg-white rounded text-sm">
-            <InertiaLink
+            <a
+              use:inertia
               href={route('users.edit', $page.auth.user.id)}
               class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
               My Profile
-            </InertiaLink>
-            <InertiaLink
+            </a>
+            <a
+              use:inertia
               href={route('users')}
               class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
               Manage Users
-            </InertiaLink>
-            <InertiaLink
+            </a>
+            <a
+              use:inertia={{ method: 'post' }}
               href={route('logout')}
-              method="post"
               class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
               Logout
-            </InertiaLink>
+            </a>
           </div>
         </Dropdown>
       </div>

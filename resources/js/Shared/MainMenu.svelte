@@ -1,5 +1,5 @@
 <script>
-  import { InertiaLink } from '@inertiajs/inertia-svelte'
+  import { inertia } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Icon from '@/Shared/Icon.svelte'
 
@@ -14,43 +14,43 @@
 
 <div {...$$restProps}>
   <div class="mb-4">
-    <InertiaLink href={route('dashboard')} class="flex items-center group py-3">
+    <a use:inertia href={route('dashboard')} class="flex items-center group py-3">
       <Icon
         name="dashboard"
         class="w-4 h-4 mr-2 {isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'}" />
       <div class={isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'}>
         Dashboard
       </div>
-    </InertiaLink>
+    </a>
   </div>
   <div class="mb-4">
-    <InertiaLink href={route('organizations')} class="flex items-center group py-3">
+    <a use:inertia href={route('organizations')} class="flex items-center group py-3">
       <Icon
         name="office"
         class="w-4 h-4 mr-2 {isUrl('organizations') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'}" />
       <div class={isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'}>
         Organizations
       </div>
-    </InertiaLink>
+    </a>
   </div>
   <div class="mb-4">
-    <InertiaLink href={route('contacts')} class="flex items-center group py-3">
+    <a use:inertia href={route('contacts')} class="flex items-center group py-3">
       <Icon
         name="users"
         class="w-4 h-4 mr-2 {isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'}" />
       <div class={isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'}>
         Contacts
       </div>
-    </InertiaLink>
+    </a>
   </div>
   <div class="mb-4">
-    <InertiaLink href={route('reports')} class="flex items-center group py-3">
+    <a use:inertia href={route('reports')} class="flex items-center group py-3">
       <Icon
         name="printer"
         class="w-4 h-4 mr-2 {isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'}" />
       <div class={isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'}>
         Reports
       </div>
-    </InertiaLink>
+    </a>
   </div>
 </div>

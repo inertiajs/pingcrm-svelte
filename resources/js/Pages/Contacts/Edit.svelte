@@ -5,7 +5,7 @@
 
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
+  import { inertia, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import SelectInput from '@/Shared/SelectInput.svelte'
@@ -51,9 +51,9 @@
 </script>
 
 <h1 class="mb-8 font-bold text-3xl">
-  <InertiaLink href={route('contacts')} class="text-indigo-400 hover:text-indigo-600">
+  <a use:inertia href={route('contacts')} class="text-indigo-400 hover:text-indigo-600">
     Contacts
-  </InertiaLink>
+  </a>
   <span class="text-indigo-400 font-medium">/</span>
   {contact.first_name}
   {contact.last_name}
