@@ -6,7 +6,7 @@
   export let value
   export let label
   export let type = 'text'
-  export let errors = []
+  export let error
 
   let input
 
@@ -17,8 +17,6 @@
     ...$$restProps,
     class: 'form-input',
   }
-
-  $: error = errors !== undefined && errors.length > 0
 
   function update(event) {
     value = event.target.value
@@ -31,6 +29,6 @@
   <input {...props} bind:this={input} class:error {id} {type} {value} on:input={update} />
 
   {#if error}
-    <div class="form-error">{errors[0]}</div>
+    <div class="form-error">{error}</div>
   {/if}
 </div>

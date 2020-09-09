@@ -1,12 +1,14 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
+  import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import FileInput from '@/Shared/FileInput.svelte'
   import Layout from '@/Shared/Layout.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import SelectInput from '@/Shared/SelectInput.svelte'
   import TextInput from '@/Shared/TextInput.svelte'
+
+  export let errors = {}
 
   let sending = false
   let form = remember({
@@ -47,29 +49,29 @@
       <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
         <TextInput
           bind:value={$form.first_name}
-          errors={$page.errors.first_name}
+          error={errors.first_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="First name:" />
         <TextInput
           bind:value={$form.last_name}
-          errors={$page.errors.last_name}
+          error={errors.last_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Last name:" />
         <TextInput
           bind:value={$form.email}
-          errors={$page.errors.email}
+          error={errors.email}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Email:" />
         <TextInput
           bind:value={$form.password}
-          errors={$page.errors.password}
+          error={errors.password}
           class="pr-6 pb-8 w-full lg:w-1/2"
           type="password"
           autocomplete="new-password"
           label="Password:" />
         <SelectInput
           bind:value={$form.owner}
-          errors={$page.errors.owner}
+          error={errors.owner}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Owner:">
           <option value="1">Yes</option>
@@ -77,7 +79,7 @@
         </SelectInput>
         <FileInput
           bind:value={$form.photo}
-          errors={$page.errors.photo}
+          error={errors.photo}
           class="pr-6 pb-8 w-full lg:w-1/2"
           type="file"
           accept="image/*"

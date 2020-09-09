@@ -6,7 +6,7 @@
   export let id = `select-input-${nanoid(5)}`
   export let value
   export let label
-  export let errors = []
+  export let error
 
   let input
 
@@ -16,8 +16,6 @@
     ...$$restProps,
     class: 'form-select',
   }
-
-  $: error = errors !== undefined && errors.length > 0
 
   const dispatch = createEventDispatcher()
 
@@ -35,6 +33,6 @@
   </select>
 
   {#if error}
-    <div class="form-error">{errors[0]}</div>
+    <div class="form-error">{error}</div>
   {/if}
 </div>

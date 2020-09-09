@@ -1,6 +1,6 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
+  import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import FileInput from '@/Shared/FileInput.svelte'
   import Layout from '@/Shared/Layout.svelte'
@@ -9,6 +9,7 @@
   import TextInput from '@/Shared/TextInput.svelte'
   import TrashedMessage from '@/Shared/TrashedMessage.svelte'
 
+  export let errors = {}
   export let user = {}
 
   let sending = false
@@ -36,7 +37,7 @@
     Inertia.post(route('users.update', user.id), data).then(() => {
       sending = false
 
-      if (Object.keys($page.errors).length === 0) {
+      if (Object.keys(errors).length === 0) {
         $form.photo = null
         $form.password = null
       }
@@ -83,29 +84,29 @@
       <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
         <TextInput
           bind:value={$form.first_name}
-          errors={$page.errors.first_name}
+          error={errors.first_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="First name:" />
         <TextInput
           bind:value={$form.last_name}
-          errors={$page.errors.last_name}
+          error={errors.last_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Last name:" />
         <TextInput
           bind:value={$form.email}
-          errors={$page.errors.email}
+          error={errors.email}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Email:" />
         <TextInput
           bind:value={$form.password}
-          errors={$page.errors.password}
+          error={errors.password}
           autocomplete="new-password"
           class="pr-6 pb-8 w-full lg:w-1/2"
           type="password"
           label="Password:" />
         <SelectInput
           bind:value={$form.owner}
-          errors={$page.errors.owner}
+          error={errors.owner}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Owner:"
           let:selected>
@@ -114,7 +115,7 @@
         </SelectInput>
         <FileInput
           bind:value={$form.photo}
-          errors={$page.errors.photo}
+          error={errors.photo}
           class="pr-6 pb-8 w-full lg:w-1/2"
           accept="image/*"
           label="Photo:" />

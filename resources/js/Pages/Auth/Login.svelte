@@ -1,10 +1,11 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { page } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import Logo from '@/Shared/Logo.svelte'
   import TextInput from '@/Shared/TextInput.svelte'
+
+  export let errors = {}
 
   let sending = false
   let form = {
@@ -38,7 +39,7 @@
         <div class="mx-auto mt-6 w-24 border-b-2" />
         <TextInput
           bind:value={form.email}
-          errors={$page.errors.email}
+          error={errors.email}
           class="mt-10"
           label="Email:"
           type="email"

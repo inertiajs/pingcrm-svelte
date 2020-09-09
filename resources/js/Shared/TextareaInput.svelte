@@ -8,7 +8,7 @@
   export let label
   export let value
   export let autosize = false
-  export let errors = []
+  export let error
 
   let input
 
@@ -19,8 +19,6 @@
     ...$$restProps,
     class: 'form-textarea',
   }
-
-  $: error = errors !== undefined && errors.length > 0
 
   onMount(() => {
     if (autosize) {
@@ -39,6 +37,6 @@
   <textarea {...props} bind:this={input} class:error {id} {value} on:input={update} />
 
   {#if error}
-    <div class="form-error">{errors[0]}</div>
+    <div class="form-error">{error}</div>
   {/if}
 </div>

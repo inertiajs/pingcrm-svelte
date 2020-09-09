@@ -1,6 +1,6 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { InertiaLink, page, remember } from '@inertiajs/inertia-svelte'
+  import { InertiaLink, remember } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import Layout from '@/Shared/Layout.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
@@ -9,6 +9,7 @@
   import TrashedMessage from '@/Shared/TrashedMessage.svelte'
 
   export let contact = {}
+  export let errors = {}
   export let organizations = []
 
   let sending = false
@@ -61,17 +62,17 @@
       <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
         <TextInput
           bind:value={$form.first_name}
-          errors={$page.errors.first_name}
+          error={errors.first_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="First name:" />
         <TextInput
           bind:value={$form.last_name}
-          errors={$page.errors.last_name}
+          error={errors.last_name}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Last name:" />
         <SelectInput
           bind:value={$form.organization_id}
-          errors={$page.errors.organization_id}
+          error={errors.organization_id}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Organization:"
           let:selected>
@@ -84,32 +85,32 @@
         </SelectInput>
         <TextInput
           bind:value={$form.email}
-          errors={$page.errors.email}
+          error={errors.email}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Email:" />
         <TextInput
           bind:value={$form.phone}
-          errors={$page.errors.phone}
+          error={errors.phone}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Phone:" />
         <TextInput
           bind:value={$form.address}
-          errors={$page.errors.address}
+          error={errors.address}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Address:" />
         <TextInput
           bind:value={$form.city}
-          errors={$page.errors.city}
+          error={errors.city}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="City:" />
         <TextInput
           bind:value={$form.region}
-          errors={$page.errors.region}
+          error={errors.region}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Province/State:" />
         <SelectInput
           bind:value={$form.country}
-          errors={$page.errors.country}
+          error={errors.country}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Country:"
           let:selected>
@@ -119,7 +120,7 @@
         </SelectInput>
         <TextInput
           bind:value={$form.postal_code}
-          errors={$page.errors.postal_code}
+          error={errors.postal_code}
           class="pr-6 pb-8 w-full lg:w-1/2"
           label="Postal code:" />
       </div>
