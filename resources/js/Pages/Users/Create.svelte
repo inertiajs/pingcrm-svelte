@@ -27,8 +27,6 @@
   })
 
   function submit() {
-    sending = true
-
     const data = new FormData()
     data.append('first_name', $form.first_name || '')
     data.append('last_name', $form.last_name || '')
@@ -37,7 +35,10 @@
     data.append('owner', $form.owner ? 1 : 0)
     data.append('photo', $form.photo || '')
 
-    Inertia.post(route('users.store'), data).then(() => (sending = false))
+    Inertia.post(route('users.store'), data, {
+      onStart: () => sending = true,
+      onFinish: () => sending = false,
+    })
   }
 </script>
 

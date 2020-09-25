@@ -15,12 +15,16 @@
   }
 
   function submit() {
-    sending = true
-    Inertia.post(route('login.attempt'), {
+    const data = {
       email: form.email,
       password: form.password,
       remember: form.remember,
-    }).then(() => (sending = false))
+    }
+
+    Inertia.post(route('login.attempt'), data, {
+      onStart: () => sending = true,
+      onFinish: () => sending = false,
+    })
   }
 </script>
 

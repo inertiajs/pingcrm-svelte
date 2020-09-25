@@ -31,8 +31,10 @@
   })
 
   function submit() {
-    sending = true
-    Inertia.post(route('contacts.store'), $form).then(() => (sending = false))
+    Inertia.post(route('contacts.store'), $form, {
+      onStart: () => sending = true,
+      onFinish: () => sending = false,
+    })
   }
 </script>
 

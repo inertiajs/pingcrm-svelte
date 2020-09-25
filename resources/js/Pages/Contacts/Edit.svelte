@@ -33,8 +33,10 @@
   })
 
   function submit() {
-    sending = true
-    Inertia.put(route('contacts.update', contact.id), $form).then(() => (sending = false))
+    Inertia.put(route('contacts.update', contact.id), $form, {
+      onStart: () => sending = true,
+      onFinish: () => sending = false,
+    })
   }
 
   function destroy() {

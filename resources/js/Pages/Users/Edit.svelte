@@ -29,8 +29,6 @@
   })
 
   function submit() {
-    sending = true
-
     const data = new FormData()
     data.append('first_name', $form.first_name || '')
     data.append('last_name', $form.last_name || '')
@@ -40,13 +38,15 @@
     data.append('photo', $form.photo || '')
     data.append('_method', 'put')
 
-    Inertia.post(route('users.update', user.id), data).then(() => {
-      sending = false
-
-      if (Object.keys(errors).length === 0) {
-        $form.photo = null
-        $form.password = null
-      }
+    Inertia.post(route('users.update', user.id), data, {
+      onStart: () => sending = true,
+      onFinish: () => sending = false,
+      onSuccess: () => {
+        if (Object.keys(errors).length === 0) {
+          $form.photo = null
+          $form.password = null
+        }
+      },
     })
   }
 

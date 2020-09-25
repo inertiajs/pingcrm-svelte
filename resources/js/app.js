@@ -1,4 +1,7 @@
 import { InertiaApp } from '@inertiajs/inertia-svelte'
+import { InertiaProgress } from '@inertiajs/progress/src'
+
+InertiaProgress.init()
 
 let app = document.getElementById('app')
 
