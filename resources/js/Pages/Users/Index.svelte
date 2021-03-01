@@ -5,7 +5,7 @@
 
 <script>
   import { inertia, page } from '@inertiajs/inertia-svelte'
-  import { route } from '@/utils'
+  import { route } from '@/Utils'
   import Icon from '@/Shared/Icon.svelte'
   import SearchFilter from '@/Shared/SearchFilter.svelte'
 
@@ -14,8 +14,8 @@
   $title = 'Users'
 
   let filters = {
-    role: $page.filters.role,
-    trashed: $page.filters.trashed,
+    role: $page.props.filters.role,
+    trashed: $page.props.filters.trashed,
   }
 </script>
 
@@ -55,7 +55,7 @@
             href={route('users.edit', user.id)}
             class="px-6 py-4 flex items-center focus:text-indigo-500">
             {#if user.photo}
-              <img class="block w-5 h-5 rounded-full mr-2 -my-2" src={user.photo} />
+              <img class="block w-5 h-5 rounded-full mr-2 -my-2" src={user.photo} alt="user" />
             {/if}
             {user.name}
             {#if user.deleted_at}

@@ -11,14 +11,14 @@
     "prettier": "prettier --write ./resources/js/**/*"
   },
   "dependencies": {
-    "@inertiajs/inertia": "^0.3.4",
-    "@inertiajs/inertia-svelte": "^0.3.1",
-    "@inertiajs/progress": "^0.1.0",
+    "@inertiajs/inertia": "^0.8.5",
+    "@inertiajs/inertia-svelte": "^0.6.1",
+    "@inertiajs/progress": "^0.2.4",
     "lodash": "^4.17.15",
     "popper.js": "^1.16.0",
     "postcss-import": "^12.0.1",
     "postcss-nesting": "^7.0.1",
-    "svelte": "^3.24.1",
+    "svelte": "3.29.0",
     "tailwindcss": "^1.8.6"
   },
   "devDependencies": {

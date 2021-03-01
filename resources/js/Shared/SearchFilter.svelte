@@ -1,7 +1,7 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
   import { page } from '@inertiajs/inertia-svelte'
-  import { route } from '@/utils'
+  import { route } from '@/Utils'
   import pickBy from 'lodash/pickBy'
   import debounce from 'lodash/debounce'
   import Dropdown from '@/Shared/Dropdown.svelte'
@@ -16,7 +16,7 @@
 
   let readyToSearch = false
   let form = {
-    search: $page.filters.search,
+    search: $page.props.filters.search,
   }
 
   $: if (filters) {

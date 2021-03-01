@@ -1,7 +1,7 @@
 <script>
   import Popper from 'popper.js'
   import { onDestroy, tick } from 'svelte'
-  import { isEscKey } from '@/utils'
+  import { isEscKey } from '@/Utils'
 
   export let placement = 'bottom-end'
   export let boundary = 'scrollParent'
@@ -33,9 +33,9 @@
   }
 
   function keydown(e) {
-    if (!isEscKey(e)) return
-
-    show = false
+    if (e.keyCode && e.keyCode === 27) {
+      show = false
+    }
   }
 
   onDestroy(() => {

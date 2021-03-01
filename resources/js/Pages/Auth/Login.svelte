@@ -1,6 +1,6 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { route } from '@/utils'
+  import { route } from '@/Utils'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import Logo from '@/Shared/Logo.svelte'
   import TextInput from '@/Shared/TextInput.svelte'

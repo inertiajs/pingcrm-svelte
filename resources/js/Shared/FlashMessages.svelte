@@ -8,13 +8,13 @@
   }
 </script>
 
-{#if $page.flash.success && show}
+{#if $page.props.flash.success && show}
   <div class="mb-8 flex items-center justify-between bg-green-500 rounded max-w-3xl">
     <div class="flex items-center">
       <svg class="ml-4 mr-2 flex-shrink-0 w-4 h-4 fill-white" viewBox="0 0 20 20">
         <polygon points="0 11 2 9 7 14 18 3 20 5 7 18" />
       </svg>
-      <div class="py-4 text-white text-sm font-medium">{$page.flash.success}</div>
+      <div class="py-4 text-white text-sm font-medium">{$page.props.flash.success}</div>
     </div>
     <button type="button" class="group mr-2 p-2" on:click={close}>
       <svg
@@ -33,7 +33,7 @@
   </div>
 {/if}
 
-{#if $page.flash.error || (Object.keys($page.errors).length > 0 && show)}
+{#if $page.props.flash.error || (Object.keys($page.props.errors).length > 0 && show)}
   <div class="mb-8 flex items-center justify-between bg-red-500 rounded max-w-3xl">
     <div class="flex items-center">
       <svg class="ml-4 mr-2 flex-shrink-0 w-4 h-4 fill-white" viewBox="0 0 20 20">
@@ -42,14 +42,14 @@
           4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83
           2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z" />
       </svg>
-      {#if $page.flash.error}
-        <div class="py-4 text-white text-sm font-medium">{$page.flash.error}</div>
+      {#if $page.props.flash.error}
+        <div class="py-4 text-white text-sm font-medium">{$page.props.flash.error}</div>
       {:else}
         <div class="py-4 text-white text-sm font-medium">
-          {#if Object.keys($page.errors).length === 1}
+          {#if Object.keys($page.props.errors).length === 1}
             <span>There is one form error.</span>
           {:else}
-            <span>There are {Object.keys($page.errors).length} form errors.</span>
+            <span>There are {Object.keys($page.props.errors).length} form errors.</span>
           {/if}
         </div>
       {/if}
