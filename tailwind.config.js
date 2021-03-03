@@ -8,19 +8,19 @@ module.exports = {
       },
       colors: {
         indigo: {
-          '900': '#191e38',
-          '800': '#2f365f',
-          '600': '#5661b3',
-          '500': '#6574cd',
-          '400': '#7886d7',
-          '300': '#b2b7ff',
-          '100': '#e6e8ff',
+          900: '#191e38',
+          800: '#2f365f',
+          600: '#5661b3',
+          500: '#6574cd',
+          400: '#7886d7',
+          300: '#b2b7ff',
+          100: '#e6e8ff',
         },
       },
-      boxShadow: theme => ({
+      boxShadow: (theme) => ({
         outline: '0 0 0 2px ' + theme('colors.indigo.500'),
       }),
-      fill: theme => theme('colors'),
+      fill: (theme) => theme('colors'),
     },
   },
   variants: {
@@ -33,6 +33,6 @@ module.exports = {
     content: ['./resources/views/**/*.blade.php', './resources/js/**/*.svelte'],
     options: {
       whitelistPatterns: [/nprogress/],
-    }
-  }
+    },
+  },
 }
