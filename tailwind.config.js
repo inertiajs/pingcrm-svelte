@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [],
   purge: {
-    content: ['./resources/views/**/*.blade.php', './resources/js/**/*.vue'],
+    content: ['./resources/views/**/*.blade.php', './resources/js/**/*.svelte'],
     options: {
       whitelistPatterns: [/nprogress/],
     }
