@@ -17,9 +17,9 @@
   <title>{$title ? `${$title} - Ping CRM` : 'Ping CRM'}</title>
 </svelte:head>
 
-<div class="flex flex-col">
-  <div class="h-screen flex flex-col">
-    <div class="md:flex flex-shrink-0">
+<div class="md:flex md:flex-col">
+  <div class="md:h-screen md:flex md:flex-col">
+    <div class="md:flex md:flex-shrink-0">
       <div class="bg-indigo-900 md:flex-shrink-0 md:w-56 px-6 py-4 flex items-center justify-between md:justify-center">
         <a use:inertia href="/" class="mt-1">
           <Logo class="fill-white" width="120" height="28" />
@@ -68,9 +68,9 @@
         </Dropdown>
       </div>
     </div>
-    <div class="flex flex-grow overflow-hidden">
+    <div class="md:flex md:flex-grow md:overflow-hidden">
       <MainMenu class="bg-indigo-800 flex-shrink-0 w-56 p-12 hidden md:block overflow-y-auto" />
-      <div class="flex-1 px-4 py-8 md:p-12 overflow-y-auto" scroll-region>
+      <div class="flex-1 px-4 py-8 md:p-12 md:overflow-y-auto" scroll-region>
         <FlashMessages />
         <slot />
       </div>
