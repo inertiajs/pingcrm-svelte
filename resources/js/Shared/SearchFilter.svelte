@@ -38,8 +38,10 @@
 
     let query = pickBy(form)
 
-    Inertia.replace(
-      route(route().current(), Object.keys(query).length ? query : { remember: 'forget' })
+    Inertia.get(
+      route(route().current()),
+      Object.keys(query).length ? query : { remember: 'forget' },
+      { preserveState: true }
     )
   }, 150)
 </script>
