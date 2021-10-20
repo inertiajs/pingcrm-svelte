@@ -36,13 +36,7 @@
       return
     }
 
-    let query = pickBy(form)
-
-    Inertia.get(
-      route(route().current()),
-      Object.keys(query).length ? query : { remember: 'forget' },
-      { preserveState: true }
-    )
+    Inertia.get(route(route().current()), pickBy(form), { preserveState: true })
   }, 150)
 </script>
 
