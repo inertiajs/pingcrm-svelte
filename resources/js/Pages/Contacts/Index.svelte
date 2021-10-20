@@ -101,4 +101,4 @@
     {/if}
   </table>
 </div>
-<Pagination links={contacts.links} />
+<Pagination class="mt-6" links={contacts.links} />

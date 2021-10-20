@@ -91,4 +91,4 @@
     {/if}
   </table>
 </div>
-<Pagination links={organizations.links} />
+<Pagination class="mt-6" links={organizations.links} />
