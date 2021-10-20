@@ -17,10 +17,3 @@
     Inertia.js
   </a> works.
 </p>
-<div class="mb-8 flex">
-  <a use:inertia href="/500" class="btn-indigo">500 error</a>
-  <a use:inertia href="/404" class="btn-indigo ml-1">404 error</a>
-</div>
-<p class="leading-normal">
-  👆 These links are intended to be broken to illustrate how error handling works with Inertia.js.
-</p>
