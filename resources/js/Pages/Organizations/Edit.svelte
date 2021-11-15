@@ -28,7 +28,7 @@
     postal_code: organization.postal_code,
   })
 
-  function submit() {
+  function update() {
     $form.put(route('organizations.update', organization.id))
   }
 
@@ -60,7 +60,7 @@
 {/if}
 
 <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-  <form on:submit|preventDefault={submit}>
+  <form on:submit|preventDefault={update}>
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.name}

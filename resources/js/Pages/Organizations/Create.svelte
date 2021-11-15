@@ -23,7 +23,7 @@
     postal_code: null,
   })
 
-  function submit() {
+  function store() {
     $form.post(route('organizations.store'))
   }
 </script>
@@ -36,7 +36,7 @@
 </h1>
 
 <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-  <form on:submit|preventDefault={submit}>
+  <form on:submit|preventDefault={store}>
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.name}

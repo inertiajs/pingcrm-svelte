@@ -30,7 +30,7 @@
     postal_code: contact.postal_code,
   })
 
-  function submit() {
+  function update() {
     $form.put(route('contacts.update', contact.id))
   }
 
@@ -61,7 +61,7 @@
   </TrashedMessage>
 {/if}
 <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-  <form on:submit|preventDefault={submit}>
+  <form on:submit|preventDefault={update}>
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.first_name}
