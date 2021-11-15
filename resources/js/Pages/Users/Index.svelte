@@ -69,7 +69,7 @@
             href={route('users.edit', user.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
-            {user.email}
+            {user.email || ''}
           </a>
         </td>
         <td class="border-t">

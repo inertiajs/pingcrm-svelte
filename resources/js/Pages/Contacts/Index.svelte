@@ -70,7 +70,7 @@
             href={route('contacts.edit', contact.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
-            {contact.city}
+            {contact.city || ''}
           </a>
         </td>
         <td class="border-t">
@@ -79,7 +79,7 @@
             href={route('contacts.edit', contact.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
-            {contact.phone}
+            {contact.phone || ''}
           </a>
         </td>
         <td class="border-t w-px">

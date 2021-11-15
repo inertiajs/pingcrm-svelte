@@ -60,7 +60,7 @@
             href={route('organizations.edit', organization.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
-            {organization.city}
+            {organization.city || ''}
           </a>
         </td>
         <td class="border-t">
@@ -69,7 +69,7 @@
             href={route('organizations.edit', organization.id)}
             class="px-6 py-4 flex items-center"
             tabindex="-1">
-            {organization.phone}
+            {organization.phone || ''}
           </a>
         </td>
         <td class="border-t w-px">
