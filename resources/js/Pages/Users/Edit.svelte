@@ -5,7 +5,7 @@
 
 <script>
   import { Inertia } from '@inertiajs/inertia'
-  import { inertia, remember } from '@inertiajs/inertia-svelte'
+  import { inertia, useForm } from '@inertiajs/inertia-svelte'
   import { route } from '@/Utils'
   import FileInput from '@/Shared/FileInput.svelte'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
@@ -13,40 +13,23 @@
   import TextInput from '@/Shared/TextInput.svelte'
   import TrashedMessage from '@/Shared/TrashedMessage.svelte'
 
-  export let errors = {}
   export let user = {}
 
   $: $title = user ? `${user.first_name} ${user.last_name}` : null
 
-  let sending = false
-  let form = remember({
+  let form = useForm({
+    _method: 'put',
     first_name: user.first_name,
     last_name: user.last_name,
     email: user.email,
-    password: user.password,
+    password: null,
     owner: user.owner,
     photo: null,
   })
 
-  function submit() {
-    const data = new FormData()
-    data.append('first_name', $form.first_name || '')
-    data.append('last_name', $form.last_name || '')
-    data.append('email', $form.email || '')
-    data.append('password', $form.password || '')
-    data.append('owner', $form.owner ? 1 : 0)
-    data.append('photo', $form.photo || '')
-    data.append('_method', 'put')
-
-    Inertia.post(route('users.update', user.id), data, {
-      onStart: () => sending = true,
-      onFinish: () => sending = false,
-      onSuccess: () => {
-        if (Object.keys(errors).length === 0) {
-          $form.photo = null
-          $form.password = null
-        }
-      },
+  function update() {
+    $form.post(route('users.update', user.id), {
+      onSuccess: () => $form.reset('password', 'photo'),
     })
   }
 
@@ -86,33 +69,33 @@
 {/if}
 
 <div class="bg-white rounded shadow overflow-hidden max-w-3xl">
-  <form on:submit|preventDefault={submit}>
+  <form on:submit|preventDefault={update}>
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.first_name}
-        error={errors.first_name}
+        error={$form.errors.first_name}
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="First name:" />
       <TextInput
         bind:value={$form.last_name}
-        error={errors.last_name}
+        error={$form.errors.last_name}
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Last name:" />
       <TextInput
         bind:value={$form.email}
-        error={errors.email}
+        error={$form.errors.email}
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Email:" />
       <TextInput
         bind:value={$form.password}
-        error={errors.password}
+        error={$form.errors.password}
         autocomplete="new-password"
         class="pr-6 pb-8 w-full lg:w-1/2"
         type="password"
         label="Password:" />
       <SelectInput
         bind:value={$form.owner}
-        error={errors.owner}
+        error={$form.errors.owner}
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Owner:"
         let:selected>
@@ -121,7 +104,7 @@
       </SelectInput>
       <FileInput
         bind:value={$form.photo}
-        error={errors.photo}
+        error={$form.errors.photo}
         class="pr-6 pb-8 w-full lg:w-1/2"
         accept="image/*"
         label="Photo:" />
@@ -133,7 +116,7 @@
         </button>
       {/if}
 
-      <LoadingButton loading={sending} class="btn-indigo ml-auto" type="submit">
+      <LoadingButton loading={$form.processing} class="btn-indigo ml-auto" type="submit">
         Update User
       </LoadingButton>
     </div>
