@@ -27,7 +27,7 @@ Route::get('login', [LoginController::class, 'showLoginForm'])
     ->middleware('guest');
 
 Route::post('login', [LoginController::class, 'login'])
-    ->name('login.attempt')
+    ->name('login.store')
     ->middleware('guest');
 
 Route::post('logout', [LoginController::class, 'logout'])
