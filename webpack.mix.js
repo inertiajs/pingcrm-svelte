@@ -1,8 +1,7 @@
+const path = require('path')
+const mix = require('laravel-mix')
 const cssImport = require('postcss-import')
 const cssNesting = require('postcss-nesting')
-const mix = require('laravel-mix')
-const path = require('path')
-const tailwindcss = require('tailwindcss')
 
 /*
  |--------------------------------------------------------------------------
@@ -16,24 +15,29 @@ const tailwindcss = require('tailwindcss')
  */
 
 mix.js('resources/js/app.js', 'public/js')
-  .postCss('resources/css/app.css', 'public/css/app.css')
-  .options({
-    postCss: [
-      cssImport(),
-      cssNesting(),
-      tailwindcss('tailwind.config.js'),
-    ],
-  })
+  .postCss('resources/css/app.css', 'public/css/app.css', [
+    // prettier-ignore
+    cssImport(),
+    cssNesting(),
+    require('tailwindcss'),
+  ])
   .webpackConfig({
     resolve: {
       extensions: ['.js', '.svelte'],
       mainFields: ['svelte', 'browser', 'module', 'main'],
       alias: {
         '@': path.resolve('resources/js'),
+        // svelte: path.resolve('node_modules', 'svelte'),
       },
     },
     module: {
       rules: [
+        {
+          test: /\.(m?js)$/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
         {
           test: /\.(svelte)$/,
           use: {
