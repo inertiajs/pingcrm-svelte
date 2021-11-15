@@ -15,7 +15,7 @@
 
   $title = 'Create Contact'
 
-  let form = useForm({
+  let form = useForm(`CreateContact`, {
     first_name: null,
     last_name: null,
     organization_id: null,

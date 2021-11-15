@@ -17,7 +17,7 @@
 
   $: $title = user ? `${user.first_name} ${user.last_name}` : null
 
-  let form = useForm({
+  let form = useForm(`EditUser:${user.id}`, {
     _method: 'put',
     first_name: user.first_name,
     last_name: user.last_name,

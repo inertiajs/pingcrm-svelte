@@ -17,7 +17,7 @@
 
   $: $title = organization ? organization.name : null
 
-  let form = useForm({
+  let form = useForm(`EditOrganization:${organization.id}`, {
     name: organization.name,
     email: organization.email,
     phone: organization.phone,

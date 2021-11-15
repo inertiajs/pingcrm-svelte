@@ -17,7 +17,7 @@
 
   $: $title = contact ? `${contact.first_name} ${contact.last_name}` : null
 
-  let form = useForm({
+  let form = useForm(`EditContact:${contact.id}`, {
     first_name: contact.first_name,
     last_name: contact.last_name,
     organization_id: contact.organization_id,
