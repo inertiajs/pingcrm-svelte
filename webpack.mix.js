@@ -25,7 +25,6 @@ mix.js('resources/js/app.js', 'public/js')
     ],
   })
   .webpackConfig({
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     resolve: {
       extensions: ['.js', '.svelte'],
       mainFields: ['svelte', 'browser', 'module', 'main'],

@@ -4,7 +4,7 @@ import { InertiaProgress } from '@inertiajs/progress'
 InertiaProgress.init()
 
 createInertiaApp({
-  resolve: name => import(`@/Pages/${name}.svelte`),
+  resolve: name => require(`@/Pages/${name}.svelte`),
   setup({ el, App, props }) {
     new App({ target: el, props })
   },
