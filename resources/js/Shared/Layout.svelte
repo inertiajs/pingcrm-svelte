@@ -58,12 +58,11 @@
               class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
               Manage Users
             </a>
-            <a
-              use:inertia={{ method: 'post' }}
-              href={route('logout')}
-              class="block px-6 py-2 hover:bg-indigo-500 hover:text-white">
+            <button
+              use:inertia={{ href: route('logout'), method: 'post' }}
+              class="block px-6 py-2 hover:bg-indigo-500 hover:text-white w-full text-left">
               Logout
-            </a>
+          </button>
           </div>
         </Dropdown>
       </div>
