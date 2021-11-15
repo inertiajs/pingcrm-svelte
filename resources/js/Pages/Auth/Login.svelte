@@ -8,11 +8,16 @@
   let form = useForm({
     email: 'johndoe@example.com',
     password: 'secret',
-    remember: null,
+    remember: false,
   })
 
   function login() {
-    $form.post(route('login.store'))
+    $form
+      .transform(data => ({
+        ...data,
+        remember: data.remember ? 'on' : '',
+      }))
+      .post(route('login.store'))
   }
 </script>
 
