@@ -27,7 +27,6 @@ mix.js('resources/js/app.js', 'public/js')
       mainFields: ['svelte', 'browser', 'module', 'main'],
       alias: {
         '@': path.resolve('resources/js'),
-        // svelte: path.resolve('node_modules', 'svelte'),
       },
     },
     module: {
