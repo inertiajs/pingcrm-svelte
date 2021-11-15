@@ -1,15 +1,11 @@
-import Layout from '@/Shared/Layout.svelte'
-import { App } from '@inertiajs/inertia-svelte'
+import { createInertiaApp } from '@inertiajs/inertia-svelte'
 import { InertiaProgress } from '@inertiajs/progress'
 
 InertiaProgress.init()
 
-let el = document.getElementById('app')
-
-new App({
-  target: el,
-  props: {
-    initialPage: JSON.parse(el.dataset.page),
-    resolveComponent: (name) => import(`@/Pages/${name}.svelte`),
+createInertiaApp({
+  resolve: name => import(`@/Pages/${name}.svelte`),
+  setup({ el, App, props }) {
+    new App({ target: el, props })
   },
 })
