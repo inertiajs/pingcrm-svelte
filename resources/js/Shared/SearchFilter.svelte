@@ -44,7 +44,7 @@
   <div class="flex w-full bg-white shadow rounded">
     <Dropdown
       class="px-4 md:px-6 rounded-l border-r hover:bg-gray-100 focus:border-white
-      focus:shadow-outline focus:z-10"
+      focus:ring focus:z-10"
       placement="bottom-start"
       autoclose={false}>
       <div class="flex items-baseline">
@@ -67,7 +67,7 @@
     </Dropdown>
 
     <input
-      class="relative w-full px-6 py-3 rounded-r focus:shadow-outline"
+      class="relative w-full px-6 py-3 rounded-r focus:ring"
       autocomplete="off"
       type="text"
       name="search"

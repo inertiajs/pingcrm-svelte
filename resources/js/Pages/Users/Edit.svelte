@@ -68,8 +68,12 @@
   <TrashedMessage class="mb-6" on:restore={restore}>This user has been deleted.</TrashedMessage>
 {/if}
 
-<div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+<div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
   <form on:submit|preventDefault={update}>
+    {#if $form.isDirty}
+      <div>There are unsaved form changes.</div>
+    {/if}
+
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.first_name}
@@ -109,7 +113,7 @@
         accept="image/*"
         label="Photo:" />
     </div>
-    <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
+    <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
       {#if !user.deleted_at}
         <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
           Delete User

@@ -48,7 +48,7 @@
         </label>
       </div>
       <div
-        class="px-10 py-4 bg-gray-100 border-t border-gray-100 flex">
+        class="px-10 py-4 bg-gray-50 border-t border-gray-100 flex">
         <a class="hover:underline" tabindex="-1" href="#reset-password">Forgot password?</a>
         <LoadingButton bind:loading={$form.processing} class="btn-indigo ml-auto" type="submit">Login</LoadingButton>
       </div>

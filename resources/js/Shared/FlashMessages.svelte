@@ -34,7 +34,7 @@
 {/if}
 
 {#if $page.props.flash.error || (Object.keys($page.props.errors).length > 0 && show)}
-  <div class="mb-8 flex items-center justify-between bg-red-500 rounded max-w-3xl">
+  <div class="mb-8 flex items-center justify-between bg-red-400 rounded max-w-3xl">
     <div class="flex items-center">
       <svg class="ml-4 mr-2 flex-shrink-0 w-4 h-4 fill-white" viewBox="0 0 20 20">
         <path

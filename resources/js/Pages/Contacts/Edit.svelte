@@ -60,7 +60,7 @@
     This contact has been deleted.
   </TrashedMessage>
 {/if}
-<div class="bg-white rounded shadow overflow-hidden max-w-3xl">
+<div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
   <form on:submit|preventDefault={update}>
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
@@ -127,7 +127,7 @@
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Postal code:" />
     </div>
-    <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
+    <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
       {#if !contact.deleted_at}
         <button class="text-red-600 hover:underline" tabindex="-1" type="button" on:click={destroy}>
           Delete Contact

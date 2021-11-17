@@ -27,7 +27,7 @@
     "resolve-url-loader": "^3.1.0",
     "svelte": "3.29.0",
     "svelte-loader": "^3.1.2",
-    "tailwindcss": "^1.8.6",
+    "tailwindcss": "^2.2.19",
     "vue-template-compiler": "^2.6.12"
   }
 }
