@@ -1,10 +1,8 @@
 <script>
-  import Popper from 'popper.js'
+  import { createPopper } from '@popperjs/core'
   import { onDestroy, tick } from 'svelte'
-  import { isEscKey } from '@/utils'
 
   export let placement = 'bottom-end'
-  export let boundary = 'scrollParent'
   export let autoclose = true
 
   let button
@@ -18,11 +16,16 @@
   async function showDropdown(show) {
     if (show) {
       await tick()
-      popper = new Popper(button, dropdown, {
+      popper = createPopper(button, dropdown, {
         placement: placement,
-        modifiers: {
-          preventOverflow: { boundariesElement: boundary },
-        },
+        modifiers: [
+          {
+            name: 'preventOverflow',
+            options: {
+              altBoundary: true,
+            },
+          },
+        ],
       })
 
       document.body.appendChild(portal)
