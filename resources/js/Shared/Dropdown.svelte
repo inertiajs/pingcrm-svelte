@@ -1,7 +1,7 @@
 <script>
   import Popper from 'popper.js'
   import { onDestroy, tick } from 'svelte'
-  import { isEscKey } from '@/Utils'
+  import { isEscKey } from '@/utils'
 
   export let placement = 'bottom-end'
   export let boundary = 'scrollParent'

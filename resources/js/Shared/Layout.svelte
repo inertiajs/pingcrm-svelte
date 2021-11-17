@@ -5,7 +5,7 @@
 
 <script>
   import { inertia, page } from '@inertiajs/inertia-svelte'
-  import { route } from '@/Utils'
+  import { route } from '@/utils'
   import Dropdown from '@/Shared/Dropdown.svelte'
   import FlashMessages from '@/Shared/FlashMessages.svelte'
   import Icon from '@/Shared/Icon.svelte'

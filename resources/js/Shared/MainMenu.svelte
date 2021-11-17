@@ -1,6 +1,6 @@
 <script>
   import { inertia, page } from '@inertiajs/inertia-svelte'
-  import { route } from '@/Utils'
+  import { route } from '@/utils'
   import Icon from '@/Shared/Icon.svelte'
 
   $: isUrl = (...urls) => {

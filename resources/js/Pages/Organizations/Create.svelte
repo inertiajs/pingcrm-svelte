@@ -5,7 +5,7 @@
 
 <script>
   import { inertia, useForm } from '@inertiajs/inertia-svelte'
-  import { route } from '@/Utils'
+  import { route } from '@/utils'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
   import SelectInput from '@/Shared/SelectInput.svelte'
   import TextInput from '@/Shared/TextInput.svelte'

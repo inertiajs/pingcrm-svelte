@@ -1,7 +1,7 @@
 <script>
   import { Inertia } from '@inertiajs/inertia'
   import { page } from '@inertiajs/inertia-svelte'
-  import { route } from '@/Utils'
+  import { route } from '@/utils'
   import pickBy from 'lodash/pickBy'
   import debounce from 'lodash/debounce'
   import Dropdown from '@/Shared/Dropdown.svelte'
