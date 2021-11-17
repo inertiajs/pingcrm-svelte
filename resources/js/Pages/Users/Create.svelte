@@ -64,8 +64,8 @@
         error={$form.errors.owner}
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Owner:">
-        <option value={true}>Yes</option>
-        <option value={false}>No</option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
       </SelectInput>
       <FileInput
         bind:value={$form.photo}

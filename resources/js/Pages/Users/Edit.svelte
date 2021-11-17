@@ -103,8 +103,8 @@
         class="pr-6 pb-8 w-full lg:w-1/2"
         label="Owner:"
         let:selected>
-        <option value={true} selected={selected === true}>Yes</option>
-        <option value={false} selected={selected === false}>No</option>
+        <option value="1" selected={selected === true}>Yes</option>
+        <option value="0" selected={selected === false}>No</option>
       </SelectInput>
       <FileInput
         bind:value={$form.photo}
