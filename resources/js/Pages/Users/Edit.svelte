@@ -70,10 +70,6 @@
 
 <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
   <form on:submit|preventDefault={update}>
-    {#if $form.isDirty}
-      <div>There are unsaved form changes.</div>
-    {/if}
-
     <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
       <TextInput
         bind:value={$form.first_name}
