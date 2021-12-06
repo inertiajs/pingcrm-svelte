@@ -6,7 +6,7 @@ module.exports = {
     // prettier-ignore
     './resources/**/*.blade.php',
     './resources/**/*.js',
-    './resources/**/*.vue',
+    './resources/**/*.svelte',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
