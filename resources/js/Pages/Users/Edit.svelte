@@ -28,7 +28,7 @@
   })
 
   function update() {
-    $form.post(route('users.update', user.id), {
+    $form.post(route('users.update', user.id).url(), {
       onSuccess: () => $form.reset('password', 'photo'),
     })
   }

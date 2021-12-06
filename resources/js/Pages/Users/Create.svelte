@@ -23,7 +23,7 @@
   })
 
   function store() {
-    $form.post(route('users.store'))
+    $form.post(route('users.store').url())
   }
 </script>
 
