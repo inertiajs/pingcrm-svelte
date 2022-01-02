@@ -4,8 +4,6 @@
 </script>
 
 <script>
-  import { inertia } from '@inertiajs/inertia-svelte'
-
   $title = 'Dashboard'
 </script>
 

@@ -13,7 +13,7 @@
 
   $title = 'Create User'
 
-  let form = useForm(`CreateUser`, {
+  let form = useForm('CreateUser', {
     first_name: null,
     last_name: null,
     email: null,

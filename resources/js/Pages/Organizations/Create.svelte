@@ -12,7 +12,7 @@
 
   $title = 'Create Organization'
 
-  let form = useForm(`CreateOrganization`, {
+  let form = useForm('CreateOrganization', {
     name: null,
     email: null,
     phone: null,
