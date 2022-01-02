@@ -6,6 +6,7 @@
     "watch": "mix watch",
     "watch-poll": "mix watch -- --watch-options-poll=1000",
     "hot": "mix watch --hot",
+    "lint": "eslint --ext js,svelte resources/js",
     "prod": "npm run production",
     "production": "mix --production",
     "heroku-postbuild": "npm run prod"
@@ -15,19 +16,24 @@
     "@inertiajs/inertia-svelte": "^0.7.4",
     "@inertiajs/progress": "^0.2.6",
     "@popperjs/core": "^2.10.2",
-    "eslint": "^6.8.0",
+    "autoprefixer": "^10.0.2",
     "fit-textarea": "^2.0.0",
     "laravel-mix": "^6.0.6",
     "lodash": "^4.17.21",
     "nanoid": "^3.1.12",
+    "postcss": ">=8.3.11 <9.0.0",
     "postcss-import": "^12.0.1",
     "postcss-nesting": "^7.0.1",
-    "prettier": "^2.1.1",
-    "prettier-plugin-svelte": "^1.2.1",
     "resolve-url-loader": "^3.1.0",
     "svelte": "3.40.0",
     "svelte-loader": "^3.1.2",
     "tailwindcss": "^2.2.19",
     "vue-template-compiler": "^2.6.12"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.1.1",
+    "prettier-plugin-svelte": "^1.2.1"
   }
 }

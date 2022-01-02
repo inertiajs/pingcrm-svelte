@@ -4,7 +4,6 @@
 </script>
 
 <script>
-  import { Inertia } from '@inertiajs/inertia'
   import { inertia, useForm } from '@inertiajs/inertia-svelte'
   import { route } from '@/utils'
   import LoadingButton from '@/Shared/LoadingButton.svelte'
@@ -15,7 +14,7 @@
 
   $title = 'Create Contact'
 
-  let form = useForm(`CreateContact`, {
+  let form = useForm('CreateContact', {
     first_name: null,
     last_name: null,
     organization_id: null,
