@@ -47,7 +47,7 @@
           <div slot="dropdown" class="mt-2 rounded bg-white py-2 text-sm shadow-xl">
             <a use:inertia href="/users/{auth.user.id}/edit" class="block px-6 py-2 hover:bg-indigo-500 hover:text-white"> My Profile </a>
             <a use:inertia href="/users" class="block px-6 py-2 hover:bg-indigo-500 hover:text-white"> Manage Users </a>
-            <button use:inertia={{ href: '/logout', method: 'post' }} class="block w-full px-6 py-2 text-left hover:bg-indigo-500 hover:text-white"> Logout </button>
+            <button use:inertia={{ href: '/logout', method: 'delete' }} class="block w-full px-6 py-2 text-left hover:bg-indigo-500 hover:text-white"> Logout </button>
           </div>
         </Dropdown>
       </div>
