@@ -1,21 +1,18 @@
 <script>
-  import { inertia } from '@inertiajs/inertia-svelte'
+  import { inertia } from '@inertiajs/svelte'
 
   export let links = []
 </script>
 
 {#if links.length > 3}
-  <div class={`flex flex-wrap -mb-1 ${$$restProps.class || ''}`}>
+  <div class={`-mb-1 flex flex-wrap ${$$restProps.class || ''}`}>
     {#each links as link, key (key)}
       {#if link.url === null}
-        <div class="mr-1 mb-1 px-4 py-3 text-sm border rounded text-gray-400">
+        <div class="mb-1 mr-1 rounded border px-4 py-3 text-sm leading-4 text-gray-400">
           {@html link.label}
         </div>
       {:else}
-        <a
-          use:inertia
-          href={link.url}
-          class={`mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500 ${link.active && 'bg-white'}`}>
+        <a use:inertia href={link.url} class={`mb-1 mr-1 rounded border px-4 py-3 text-sm leading-4 hover:bg-white focus:border-indigo-500 focus:text-indigo-500 ${link.active && 'bg-white'}`}>
           {@html link.label}
         </a>
       {/if}

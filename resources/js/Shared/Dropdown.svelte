@@ -36,7 +36,7 @@
   }
 
   function keydown(e) {
-    if (e.keyCode && e.keyCode === 27) {
+    if (e.key === 'Escape') {
       show = false
     }
   }
@@ -55,14 +55,14 @@
 
 {#if show}
   <div bind:this={portal}>
+    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
     <div
       style="position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 99998; background:
       black; opacity: .2"
-      on:click={() => (show = false)} />
-    <div
-      bind:this={dropdown}
-      style="position: absolute; z-index: 99999;"
-      on:click|stopPropagation={() => (show = autoclose ? false : true)}>
+      on:click={() => (show = false)}
+    />
+    <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+    <div bind:this={dropdown} style="position: absolute; z-index: 99999;" on:click|stopPropagation={() => (show = !autoclose)}>
       <slot name="dropdown" />
     </div>
   </div>

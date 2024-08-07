@@ -12,10 +12,8 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $account = Account::create(['name' => 'Acme Corporation']);
 
@@ -24,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'johndoe@example.com',
+            'password' => 'secret',
             'owner' => true,
         ]);
 

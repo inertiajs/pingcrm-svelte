@@ -8,5 +8,5 @@
 </script>
 
 <div>
-  <h1 class="mb-8 font-bold text-3xl">Reports</h1>
+  <h1 class="mb-8 text-3xl font-bold">Reports</h1>
 </div>
