@@ -1,42 +1,16 @@
 <script>
-  import { router } from '@inertiajs/core'
-  import { page } from '@inertiajs/svelte'
-  import pickBy from 'lodash/pickBy'
-  import debounce from 'lodash/debounce'
+  import { createEventDispatcher } from 'svelte'
   import Dropdown from '@/Shared/Dropdown.svelte'
 
-  export let filters = {}
+  export let value
   export let maxWidth = 300
+
+  const dispatch = createEventDispatcher()
 
   $: props = {
     ...$$restProps,
     class: `flex items-center ${$$restProps.class || ''}`,
   }
-
-  let readyToSearch = false
-  let form = {
-    search: $page.props.filters.search,
-  }
-
-  $: if (filters) {
-    form = { ...form, ...filters }
-  }
-
-  $: search(form)
-
-  function reset() {
-    Object.keys(form).forEach((key) => (form[key] = null))
-    Object.keys(filters).forEach((key) => (filters[key] = null))
-  }
-
-  const search = debounce((form) => {
-    if (!readyToSearch) {
-      readyToSearch = true
-      return
-    }
-
-    router.get(window.location.href, pickBy(form), { preserveState: true })
-  }, 150)
 </script>
 
 <div {...props}>
@@ -56,8 +30,8 @@
       </div>
     </Dropdown>
 
-    <input class="focus:shadow-outline relative w-full rounded-r px-6 py-3" autocomplete="off" type="text" name="search" placeholder="Search…" bind:value={form.search} />
+    <input class="focus:shadow-outline relative w-full rounded-r px-6 py-3" autocomplete="off" type="text" name="search" placeholder="Search…" bind:value />
   </div>
 
-  <button class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500" type="button" on:click={reset}> Reset </button>
+  <button class="ml-3 text-sm text-gray-500 hover:text-gray-700 focus:text-indigo-500" type="button" on:click={() => dispatch('reset')}> Reset </button>
 </div>

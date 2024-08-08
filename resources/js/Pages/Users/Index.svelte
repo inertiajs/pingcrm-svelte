@@ -4,31 +4,49 @@
 </script>
 
 <script>
-  import { inertia, page } from '@inertiajs/svelte'
+  import { inertia, router } from '@inertiajs/svelte'
+  import isEqual from 'lodash/isEqual'
+  import mapValues from 'lodash/mapValues'
+  import pickBy from 'lodash/pickBy'
+  import throttle from 'lodash/throttle'
   import Icon from '@/Shared/Icon.svelte'
   import SearchFilter from '@/Shared/SearchFilter.svelte'
 
+  export let filters = {}
   export let users = []
 
   $title = 'Users'
 
-  let filters = {
-    role: $page.props.filters.role,
-    trashed: $page.props.filters.trashed,
+  let form = {
+    role: filters.role,
+    search: filters.search,
+    trashed: filters.trashed,
+  }
+
+  const search = throttle((form) => {
+    router.get('/users', pickBy(form), { preserveState: true })
+  }, 150)
+
+  $: if (!isEqual(filters, form)) {
+    search(form)
+  }
+
+  function reset() {
+    form = mapValues(form, () => null)
   }
 </script>
 
 <h1 class="mb-8 text-3xl font-bold">Users</h1>
 <div class="mb-6 flex items-center justify-between">
-  <SearchFilter class="mr-4 w-full max-w-md" bind:filters>
+  <SearchFilter class="mr-4 w-full max-w-md" bind:value={form.search} on:reset={reset}>
     <label for="role" class="block text-gray-700">Role:</label>
-    <select id="role" class="form-select mt-1 w-full" bind:value={filters.role}>
+    <select id="role" class="form-select mt-1 w-full" bind:value={form.role}>
       <option value={null} />
       <option value="user">User</option>
       <option value="owner">Owner</option>
     </select>
     <label for="trashed" class="mt-4 block text-gray-700">Trashed:</label>
-    <select id="trashed" class="form-select mt-1 w-full" bind:value={filters.trashed}>
+    <select id="trashed" class="form-select mt-1 w-full" bind:value={form.trashed}>
       <option value={null} />
       <option value="with">With Trashed</option>
       <option value="only">Only Trashed</option>
